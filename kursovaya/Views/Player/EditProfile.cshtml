@@ -1,0 +1,62 @@
+﻿@model Player
+
+
+<div class="create row g-0 card flex-md-row">
+    <form class="col-lg-9 d-flex flex-column" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <h4>Имя</h4>
+                    <label>@Model.Name</label>
+                </div>
+                <div class="col-md-4">
+                    <h4>Фамилия</h4>
+                    <label>@Model.Surname</label>
+                </div>
+                <div class="col-md-4">
+                    <h4>Возраст</h4>
+                    <label>@Model.age</label>
+                </div>
+                
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <h4>Страна</h4>
+                    <label>@Model.country</label>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-7">
+                    <h4>Спортивный титул</h4>
+                    <label rows="4">@Model.sport_title</label>
+                </div>
+            </div> 
+            <div class="row mb-3">
+                <div class="col-md-7">
+                    <h4>Личные рекорды</h4>
+                    <ul class="flex-grow-1">
+                        <label >Рекорд метания диска(м)</label>
+			            <input asp-for="distDisk" class="form-control"/>
+			            <span asp-validation-for="distDisk" class="text-danger"></span>
+                        <li>Метание копья: @Model.distSpear м</li>
+                        <li>Метание молота: @Model.distHammer м</li>
+                        <li>Толкание ядра: @Model.distCore м</li>
+                    </ul>
+                </div>
+            </div>
+            <a asp-controller="Player" asp-action="Save" asp-for="Id" class="btn btn-secondary" style="width:120px">
+			    Сохранить
+		    </a>
+        </div>
+           
+
+    </form>
+    @{
+        string picturePath = "/Images/" + Model.imageUrl;
+    }
+    <div class="col-lg-3">
+          <img src="@picturePath" alt="qwe" width="400" height="500"/>
+    </div>
+</div>

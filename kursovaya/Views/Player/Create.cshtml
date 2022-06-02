@@ -1,0 +1,63 @@
+﻿@model Player
+
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Добавить спортсмена</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label>Имя</label>
+			<input asp-for="Name" class="form-control"/>
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label >Фамилия</label>
+			<input asp-for="Surname" class="form-control"/>
+			<span asp-validation-for="Surname" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label>Возраст</label>
+			<input asp-for="age" class="form-control"/>
+			<span asp-validation-for="age" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label>Спортивный титул</label>
+			<input asp-for="sport_title" class="form-control"/>
+			<span asp-validation-for="sport_title" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label >Страна</label>
+			<input asp-for="country" class="form-control"/>
+			<span asp-validation-for="country" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label >Рекорд метания диска(м)</label>
+			<input asp-for="distDisk" class="form-control"/>
+			<span asp-validation-for="distDisk" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label >Рекорд толкания ядра(м)</label>
+			<input asp-for="distCore" class="form-control"/>
+			<span asp-validation-for="distCore" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label >Рекорд метания копья(м)</label>
+			<input asp-for="distSpear" class="form-control"/>
+			<span asp-validation-for="distSpear" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label >Рекорд метания молота(м)</label>
+			<input asp-for="distHammer" class="form-control"/>
+			<span asp-validation-for="distHammer" class="text-danger"></span>
+		</div>
+		<div class="col-md-3">
+            <label asp-for="imageUrl" class="control-label mb-1"></label>
+            <input id="imageInput" asp-for="imageUrl" type="file" class="form-control" />
+        </div>
+		<button type="submit" class="btn btn-primary" style="width:100px">Создать</button>
+		<a asp-controller="Player" asp-action="Index" class="btn btn-secondary" style="width:100px">
+			Вернуться
+		</a>
+	</div>
+</form>
