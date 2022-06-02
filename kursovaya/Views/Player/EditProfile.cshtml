@@ -2,8 +2,7 @@
 
 
 <div class="create row g-0 card flex-md-row">
-    <form class="col-lg-9 d-flex flex-column" method="post">
-        <input type="hidden" asp-for="Id" />
+    <form class="col-lg-9 d-flex flex-column" method="post" asp-controller="Player" asp-action="Save"> 
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-4">
@@ -46,9 +45,9 @@
                     </ul>
                 </div>
             </div>
-            <a asp-controller="Player" asp-action="Save" asp-for="Id" class="btn btn-secondary" style="width:120px">
+            <button type="submit" class="btn btn-secondary" style="width:120px">
 			    Сохранить
-		    </a>
+		    </button>
         </div>
            
 

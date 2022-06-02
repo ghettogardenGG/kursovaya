@@ -2,6 +2,7 @@
 using kursovaya.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace kursovaya.Controllers
 {
@@ -49,11 +50,17 @@ namespace kursovaya.Controllers
         }
         [Authorize(Roles = "admin")]
         [HttpPost]
-        public async Task<IActionResult> Save(Player obj)
+        public async Task<IActionResult> Save(Player model)
         {
-            _db.Players.Update(obj);
+            var existingPlayer = await _db.Players.FirstOrDefaultAsync(x => x.Id == model.Id);
+            if(existingPlayer is null)
+            {
+                return NotFound();
+            }
+            existingPlayer.distDisk = model.distDisk;
+            _db.Players.Update(existingPlayer);
             await _db.SaveChangesAsync();
-            return View("Index");
+            return RedirectToAction("/Home/Index");
         }
         public IActionResult EditProfile(int? id)
         {

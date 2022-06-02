@@ -9,15 +9,18 @@ using Microsoft.AspNetCore.Mvc;
 using kursovaya.Models;
 using kursovaya.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace kursovaya.Controllers
 {
     public class AccountController : Controller
     {
         private ApplicationDbContext _context;
-        public AccountController(ApplicationDbContext context)
+        private readonly SignInManager<User> _signInManager;
+        public AccountController(ApplicationDbContext context, SignInManager<User> signInManager)
         {
             _context = context;
+            _signInManager = signInManager;
         }
         [HttpGet]
         public IActionResult Register()
@@ -89,6 +92,11 @@ namespace kursovaya.Controllers
             // установка аутентификационных куки
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
-
+        public async Task<IActionResult> Logout()
+        {
+            // удаляем аутентификационные куки
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
