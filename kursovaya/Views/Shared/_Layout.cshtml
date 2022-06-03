@@ -47,13 +47,22 @@
                     {
                         <div>
                                 <ul class="navbar-nav flex-grow-1">
+                                @if(this.User.Identity.Name == "admin@mail.ru")
+                                {
+                                    <form asp-controller="Account" asp-action="ListUsers">
                                     <li style="margin: 15px 25px 5px 40px">
-                                        <a>@User.Identity.Name</a>
+                                        <input class="btn btn-primary" type="submit" value="@User.Identity.Name" />
                                     </li>
+                                    </form>
+                                }else{
+                                    <li style="margin: 20px 25px 5px 40px">
+                                        @User.Identity.Name
+                                    </li>
+                                }
                                     <li>
                                         <button class="btn" style="float: right" >
                                         <form method="post" asp-controller="Account" asp-action="Logout">
-                                            <input type="submit" value="Выход"  class="btn btn-secondary" />
+                                            <input type="submit" style="margin-top:8px" value="Выход"  class="btn btn-secondary" />
                                         </form>  
                                         </button>
                                     </li>

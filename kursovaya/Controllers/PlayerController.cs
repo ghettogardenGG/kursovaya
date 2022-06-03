@@ -19,6 +19,7 @@ namespace kursovaya.Controllers
             return View(objPlayersList);
         }
         //GET
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             return View();
@@ -27,7 +28,7 @@ namespace kursovaya.Controllers
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+        [Authorize(Roles = "admin")]
         public IActionResult Create(Player obj)
         {
             if (ModelState.IsValid)
@@ -66,6 +67,7 @@ namespace kursovaya.Controllers
             existingPlayer.Name = model.Name;
             existingPlayer.Surname = model.Surname;
             existingPlayer.sport_title = model.sport_title;
+            existingPlayer.imageUrl = model.imageUrl;
             _db.Players.Update(existingPlayer);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");

@@ -58,10 +58,19 @@
                     </ul>
                 </div>
             </div>
+            @{
+        string picturePath = "/Images/" + Model.imageUrl;
+    }
+    <div class="col-lg-3">
+          <img src="@picturePath" alt="qwe" width="400" height="500"/>
+          <input asp-for="imageUrl" type="file" class="form-control"/>
+		 <span asp-validation-for="distCore" class="text-danger"></span>
+    </div>
+    <div style="margin-top:15px">
             <button type="submit" class="btn btn-secondary" style="width:120px">
 			    Сохранить
 		    </button>
-            
+      </div>      
      </form>
      <form class="col-lg-9 d-flex flex-column" method="post" asp-controller="Player" asp-action="Delete">
          <input asp-for="Id" type="hidden" />
@@ -76,10 +85,5 @@
            
 
     
-    @{
-        string picturePath = "/Images/" + Model.imageUrl;
-    }
-    <div class="col-lg-3">
-          <img src="@picturePath" alt="qwe" width="400" height="500"/>
-    </div>
+    
 </div>

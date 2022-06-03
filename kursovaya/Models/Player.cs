@@ -23,7 +23,7 @@ namespace kursovaya.Models
         [Display(Name = "Country")]
         public string country { get; set; }
         [Required]
-        [Display (Name="Image")]
+        [Display (Name = "Image")]
         public string imageUrl { get; set; }
         [Required]
         public double distHammer { get; set; }

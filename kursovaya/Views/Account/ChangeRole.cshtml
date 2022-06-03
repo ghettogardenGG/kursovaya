@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model User
+ 
+<h2>Изменение ролей для пользователя @Model.Email <h2>
+ 
+<form asp-controller="Account" asp-action="ChangeRole" method="post">
+    <input asp-for="Id" type="hidden" />
+    <div class="form-group">
+
+       
+       <input type="radio" name="admin" value="1" checked />
+       <input type="radio" name="user" value="2"/>
+      
+    </div>
+</form>
+<form asp-controller="Account" asp-action="Save" method="post">
+<input asp-for="Id" type="hidden" />
+<button type="submit" class="btn btn-secondary" style="width:120px">
+			    Сохранить
+		    </button>
+</form>

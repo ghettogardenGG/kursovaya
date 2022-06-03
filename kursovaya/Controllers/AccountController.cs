@@ -95,5 +95,29 @@ namespace kursovaya.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+        public IActionResult ListUsers()
+        {
+            IEnumerable<User> objUsersList = _context.Users.ToList();
+            return View(objUsersList);
+        }
+        public IActionResult ChangeRole(int? id)
+        {
+            var account = _context.Users.FirstOrDefault(x => x.Id == id);
+            return View(account);
+        }
+        [HttpPost]
+       public async Task<IActionResult> Save(User model)
+        {
+            var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
+            if (existingUser is null)
+            {
+                return NotFound();
+            }
+            existingUser.RoleId = model.RoleId;
+            _context.Users.Update(existingUser);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("ListUsers");
+        }
+     
     }
 }
