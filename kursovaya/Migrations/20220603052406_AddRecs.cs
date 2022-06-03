@@ -5,7 +5,7 @@
 namespace kursovaya.Migrations
 {
     /// <inheritdoc />
-    public partial class AddSportsRec : Migration
+    public partial class AddRecs : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,28 +14,28 @@ namespace kursovaya.Migrations
                 name: "distCore",
                 table: "Players",
                 type: "float",
-                nullable: false,
+                nullable: true,
                 defaultValue: 0.0);
 
             migrationBuilder.AddColumn<double>(
                 name: "distDisk",
                 table: "Players",
                 type: "float",
-                nullable: false,
+                nullable: true,
                 defaultValue: 0.0);
 
             migrationBuilder.AddColumn<double>(
                 name: "distHammer",
                 table: "Players",
                 type: "float",
-                nullable: false,
+                nullable: true,
                 defaultValue: 0.0);
 
             migrationBuilder.AddColumn<double>(
                 name: "distSpear",
                 table: "Players",
                 type: "float",
-                nullable: false,
+                nullable: true,
                 defaultValue: 0.0);
         }
 

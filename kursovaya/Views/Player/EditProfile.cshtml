@@ -3,19 +3,23 @@
 
 <div class="create row g-0 card flex-md-row">
     <form class="col-lg-9 d-flex flex-column" method="post" asp-controller="Player" asp-action="Save"> 
+        <input asp-for="Id" type="hidden" />
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-4">
                     <h4>Имя</h4>
-                    <label>@Model.Name</label>
+                    <input asp-for="Name" class="form-control"/>
+			            <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
                     <h4>Фамилия</h4>
-                    <label>@Model.Surname</label>
+                    <input asp-for="Surname" class="form-control"/>
+			            <span asp-validation-for="Surname" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
                     <h4>Возраст</h4>
-                    <label>@Model.age</label>
+                    <input asp-for="age" class="form-control"/>
+			            <span asp-validation-for="age" class="text-danger"></span>
                 </div>
                 
             </div>
@@ -23,13 +27,16 @@
             <div class="row mb-3">
                 <div class="col-md-3">
                     <h4>Страна</h4>
-                    <label>@Model.country</label>
+                    <input asp-for="country" class="form-control"/>
+			            <span asp-validation-for="country" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-7">
                     <h4>Спортивный титул</h4>
-                    <label rows="4">@Model.sport_title</label>
+
+                    <input asp-for="sport_title" class="form-control"/>
+			         <span asp-validation-for="sport_title" class="text-danger"></span>
                 </div>
             </div> 
             <div class="row mb-3">
@@ -39,19 +46,36 @@
                         <label >Рекорд метания диска(м)</label>
 			            <input asp-for="distDisk" class="form-control"/>
 			            <span asp-validation-for="distDisk" class="text-danger"></span>
-                        <li>Метание копья: @Model.distSpear м</li>
-                        <li>Метание молота: @Model.distHammer м</li>
-                        <li>Толкание ядра: @Model.distCore м</li>
+                        <li>Метание копья(м)</li>
+                        <input asp-for="distSpear" class="form-control"/>
+			            <span asp-validation-for="distSpear" class="text-danger"></span>
+                        <li>Метание молота(м)</li>
+                        <input asp-for="distHammer" class="form-control"/>
+			            <span asp-validation-for="distHammer" class="text-danger"></span>
+                        <li>Толкание ядра(м)</li>
+                        <input asp-for="distCore" class="form-control"/>
+			            <span asp-validation-for="distCore" class="text-danger"></span>
                     </ul>
                 </div>
             </div>
             <button type="submit" class="btn btn-secondary" style="width:120px">
 			    Сохранить
 		    </button>
-        </div>
+            
+     </form>
+     <form class="col-lg-9 d-flex flex-column" method="post" asp-controller="Player" asp-action="Delete">
+         <input asp-for="Id" type="hidden" />
+         <button type="submit" class="btn btn-default" style="width:120px">
+			    Удалить
+		    </button>
+     </form>
+        
+
+
+        
            
 
-    </form>
+    
     @{
         string picturePath = "/Images/" + Model.imageUrl;
     }

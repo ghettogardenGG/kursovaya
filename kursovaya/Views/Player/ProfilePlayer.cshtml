@@ -44,19 +44,29 @@
                 </div>
             </div>
         </div>
-        @if (Context.User.IsInRole("admin"))
-        {
-            <a asp-controller="Player" asp-action="EditProfile" asp-route-id="@Model.Id" class="btn btn-secondary" style="width:100px">
-			Редактировать
-		</a>
-        }
+        
+            <div class="card-body" >
+                <thead><tr>
+                @if (Context.User.IsInRole("admin"))
+            {
+                <th><a asp-controller="Player" asp-action="EditProfile" asp-route-id="@Model.Id" class="btn btn-primary" style="width:135px">
+                    Редактировать
+                </a>
+                </th>
+            }
+            <th>
+                <a asp asp-controller="Player" asp-action="Index" class="btn btn-secondary" style="width:135px">Вернуться</a>
+            </th>
+            </tr></thead>
+        </div>
+
 
 
     </form>
     @{
         string picturePath = "/Images/" + Model.imageUrl;
     }
-    <div class="col-lg-3">
+    <div class="col-lg-3" style="border-radius: 10px">
           <img src="@picturePath" alt="qwe" width="400" height="500"/>
     </div>
 </div>

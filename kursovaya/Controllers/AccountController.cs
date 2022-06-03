@@ -16,11 +16,9 @@ namespace kursovaya.Controllers
     public class AccountController : Controller
     {
         private ApplicationDbContext _context;
-        private readonly SignInManager<User> _signInManager;
-        public AccountController(ApplicationDbContext context, SignInManager<User> signInManager)
+        public AccountController(ApplicationDbContext context)
         {
             _context = context;
-            _signInManager = signInManager;
         }
         [HttpGet]
         public IActionResult Register()
@@ -94,8 +92,7 @@ namespace kursovaya.Controllers
         }
         public async Task<IActionResult> Logout()
         {
-            // удаляем аутентификационные куки
-            await _signInManager.SignOutAsync();
+            await HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
     }

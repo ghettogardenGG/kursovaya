@@ -45,11 +45,20 @@
                     }
                     else
                     {
-                         <p>@User.Identity.Name</p>
- 
-                        <form method="post" asp-controller="Account" asp-action="Logout">
-                            <input type="submit" value="Выход" />
-                        </form>   
+                        <div>
+                                <ul class="navbar-nav flex-grow-1">
+                                    <li style="margin: 15px 25px 5px 40px">
+                                        <a>@User.Identity.Name</a>
+                                    </li>
+                                    <li>
+                                        <button class="btn" style="float: right" >
+                                        <form method="post" asp-controller="Account" asp-action="Logout">
+                                            <input type="submit" value="Выход"  class="btn btn-secondary" />
+                                        </form>  
+                                        </button>
+                                    </li>
+                                </ul>
+                        </div>
                     }
                 </div>
             </div>

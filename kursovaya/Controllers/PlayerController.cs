@@ -36,7 +36,7 @@ namespace kursovaya.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View("Index");
+            return View(obj);
         }
         [Authorize(Roles = "admin, user")]
         public IActionResult ProfilePlayer(int? id)
@@ -58,14 +58,36 @@ namespace kursovaya.Controllers
                 return NotFound();
             }
             existingPlayer.distDisk = model.distDisk;
+            existingPlayer.distSpear = model.distSpear;
+            existingPlayer.distCore = model.distCore;
+            existingPlayer.distHammer = model.distHammer;
+            existingPlayer.country = model.country;
+            existingPlayer.age = model.age;
+            existingPlayer.Name = model.Name;
+            existingPlayer.Surname = model.Surname;
+            existingPlayer.sport_title = model.sport_title;
             _db.Players.Update(existingPlayer);
             await _db.SaveChangesAsync();
-            return RedirectToAction("/Home/Index");
+            return RedirectToAction("Index");
         }
         public IActionResult EditProfile(int? id)
         {
             var player = _db.Players.FirstOrDefault(x => x.Id == id);
             return View(player);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(Player model)
+        {
+            var existingPlayer = await _db.Players.FirstOrDefaultAsync(x => x.Id == model.Id);
+            
+                if (existingPlayer != null)
+                {
+                    _db.Players.Remove(existingPlayer);
+                    await _db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+            
+            return NotFound();
         }
     }
 }

@@ -12,8 +12,8 @@ using kursovaya.Data;
 namespace kursovaya.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220602095952_AddSportsRec")]
-    partial class AddSportsRec
+    [Migration("20220603052406_AddRecs")]
+    partial class AddRecs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

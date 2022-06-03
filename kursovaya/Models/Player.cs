@@ -7,27 +7,31 @@ namespace kursovaya.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Имя")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
         [Required]
-        [Display(Name = "Фамилия")]
+        [Display(Name = "Surname")]
         public string Surname { get; set; }
         [Required]
-        [Display(Name = "Возраст")]
+        [Display(Name = "Age")]
         [Range(10,80,ErrorMessage ="Возраст должен быть от 18-80")]
         public int age { get; set; }
         [Required]
-        [Display(Name = "Спортивный титул")]
+        [Display(Name = "Sport Title")]
         public string sport_title { get; set; }
         [Required]
-        [Display(Name = "Страна")]
+        [Display(Name = "Country")]
         public string country { get; set; }
         [Required]
-        [Display (Name="Изобржение")]
+        [Display (Name="Image")]
         public string imageUrl { get; set; }
+        [Required]
         public double distHammer { get; set; }
+        [Required]
         public double distCore { get; set; }
+        [Required]
         public double distDisk { get; set; }
+        [Required]
         public double distSpear { get; set; }
 
        
